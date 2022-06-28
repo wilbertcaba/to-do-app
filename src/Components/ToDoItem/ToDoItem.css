@@ -1,0 +1,16 @@
+.to-do-item {
+    padding: 16px;
+    background-color: #eee;
+    display: flex;
+    justify-content: space-between;
+    border-radius: 4px;
+}
+
+.to-do-item p {
+    margin: 0;
+}
+
+.to-do-item,
+.to-do-item button {
+    cursor: pointer;
+}
