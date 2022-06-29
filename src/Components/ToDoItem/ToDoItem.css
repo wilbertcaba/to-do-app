@@ -3,6 +3,7 @@
     background-color: #eee;
     display: flex;
     justify-content: space-between;
+    align-items: flex-start;
     border-radius: 4px;
 }
 
@@ -17,11 +18,17 @@
 
 .to-do-item-status {
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     gap: 8px;
+}
+
+.to-do-item-status p {
+    align-self: center;
 }
 
 .to-do-item-status input {
     width: 24px;
     height: 24px;
+    flex: 1 0 24px;
+    margin: 0;
 }
