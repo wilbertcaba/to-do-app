@@ -14,3 +14,14 @@
 .to-do-item button {
     cursor: pointer;
 }
+
+.to-do-item-status {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.to-do-item-status input {
+    width: 24px;
+    height: 24px;
+}

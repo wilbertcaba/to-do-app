@@ -16,10 +16,7 @@ const App = () => {
     const handleSubmit = (event) => {
         event.preventDefault();
         if (!taskName) return;
-        const taskItem  = {
-            task: taskName,
-            id: nanoid()
-        };
+
         setTaskList((prev) => ([
             ...prev,
             {
@@ -30,7 +27,11 @@ const App = () => {
         setTaskName('');
     }
 
-    useEffect(() => { console.log(taskList) }, [taskList]);
+    const removeTask = (taskId) => {
+        setTaskList(() => taskList.filter( task => task.id !== taskId ));
+    }
+
+    // useEffect(() => { console.log(taskList) }, [taskList]);
 
     return (
         <div className='App'>
@@ -39,7 +40,10 @@ const App = () => {
                 <input type='text' value={taskName} onChange={handleChange} />
                 <input type='submit' value='Add Task' />
             </form>
-            <ToDoList taskName={taskName} taskList={taskList} />
+            <ToDoList 
+                taskName={taskName}
+                taskList={taskList}
+                onRemove={removeTask}/>
         </div>
     );
 }
