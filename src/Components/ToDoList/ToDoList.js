@@ -1,6 +1,7 @@
 import React from 'react';
 import { ToDoItem } from '../ToDoItem/ToDoItem';
 import './ToDoList.css';
+import 'normalize.css';
 
 
 export const ToDoList = (props) => {
