@@ -2,6 +2,8 @@
 import React, { useState, useEffect } from 'react';
 import './App.css';
 import { ToDoList } from '../ToDoList/ToDoList';
+import { Form } from '../Form/Form';
+import { Filters } from '../Filters/Filters';
 import { nanoid } from 'nanoid';
 
 const App = () => {
@@ -36,16 +38,13 @@ const App = () => {
     return (
         <div className='App'>
             <h1>To Do List</h1>
-            <form className='task-form' onSubmit={handleSubmit}>
-                <input type='text' placeholder='New task' value={taskName} onChange={handleChange} />
-                <input type='submit' value='Add Task' />
-            </form>
 
-            <div class="btn-group">
-                <button>All Tasks</button>
-                <button>Resolved</button>
-                <button>Unresolved</button>
-            </div>
+            <Form 
+                handleSubmit={handleSubmit}
+                handleChange={handleChange}
+                taskName={taskName}/>
+
+            <Filters />
 
             <ToDoList 
                 taskName={taskName}

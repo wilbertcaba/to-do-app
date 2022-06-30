@@ -1,0 +1,18 @@
+.btn-group {
+    display: flex;
+    justify-content: space-around;
+}
+
+.btn-group button {
+    flex: 1 0 33%;
+    display: block;
+    border: none;
+    background-color: white;
+    cursor: pointer;
+    margin-bottom: 32px;
+}
+
+.btn-group button.active {
+    color: #6f6af9;
+    font-weight: bold;
+}

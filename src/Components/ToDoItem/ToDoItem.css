@@ -8,13 +8,16 @@
     align-items: flex-start;
     border-radius: 8px;
     transition: 0.3s;
+    position: relative;
+    z-index: 2;
 }
 
 .to-do-item:hover {
     /* background-color: rgb(250, 250, 250); */
     /* background-color: #f5f7fb; */
     box-shadow: none;
-    box-shadow: 0 0 50px -6px rgb(12 7 141 / 22%);
+    box-shadow: 0 8px 50px -6px rgb(12 7 141 / 22%);
+    z-index: 1;
 }
 
 .to-do-item p {
@@ -34,11 +37,11 @@
 .to-do-item-status {
     display: flex;
     align-items: flex-start;
-    gap: 8px;
 }
 
 .to-do-item-status p {
     align-self: center;
+    padding: 0 16px;
 }
 
 .to-do-item-status input {
