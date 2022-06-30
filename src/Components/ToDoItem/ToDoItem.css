@@ -1,10 +1,20 @@
 .to-do-item {
     padding: 16px;
-    background-color: #eee;
+    /* background-color: #eee; */
+    /* box-shadow: 0 0 8px 0 rgba(0,0,0,0.15); */
+    box-shadow: 0 0 20px -6px rgb(12 7 141 / 22%);
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
-    border-radius: 4px;
+    border-radius: 8px;
+    transition: 0.3s;
+}
+
+.to-do-item:hover {
+    /* background-color: rgb(250, 250, 250); */
+    /* background-color: #f5f7fb; */
+    box-shadow: none;
+    box-shadow: 0 0 50px -6px rgb(12 7 141 / 22%);
 }
 
 .to-do-item p {
@@ -14,6 +24,11 @@
 .to-do-item,
 .to-do-item button {
     cursor: pointer;
+}
+
+.to-do-item button {
+    border: none;
+    background: none;
 }
 
 .to-do-item-status {
@@ -31,4 +46,5 @@
     height: 24px;
     flex: 1 0 24px;
     margin: 0;
+    border: 1px solid #eee;
 }
