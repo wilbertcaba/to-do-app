@@ -40,6 +40,13 @@ const App = () => {
                 <input type='text' placeholder='New task' value={taskName} onChange={handleChange} />
                 <input type='submit' value='Add Task' />
             </form>
+
+            <div class="btn-group">
+                <button>All Tasks</button>
+                <button>Resolved</button>
+                <button>Unresolved</button>
+            </div>
+
             <ToDoList 
                 taskName={taskName}
                 taskList={taskList}

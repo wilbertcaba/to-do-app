@@ -38,6 +38,7 @@ input {
 .task-form {
     position: relative;
     display: flex;
+    margin-bottom: 32px;
 }
 
 .task-form input {
@@ -79,4 +80,18 @@ input {
 
 .task-form input[type='submit']:hover {
     background-color: #5955c9;
+}
+
+.btn-group {
+    display: flex;
+    justify-content: space-around;
+}
+
+.btn-group button {
+    flex: 1 0 33%;
+    display: block;
+    border: none;
+    background-color: white;
+    cursor: pointer;
+    margin-bottom: 32px;
 }

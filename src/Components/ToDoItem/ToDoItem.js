@@ -9,7 +9,7 @@ export const ToDoItem = (props) => {
     }
 
     let resolved = {
-        backgroundColor: '#737373',
+        boxShadow: 'none',
         textDecoration: 'line-through'
     };
 
