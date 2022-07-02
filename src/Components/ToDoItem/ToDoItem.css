@@ -10,6 +10,7 @@
     transition: 0.3s;
     position: relative;
     z-index: 2;
+    order: 1;
 }
 
 .to-do-item:hover {

@@ -3,19 +3,17 @@ import React, { useState, useEffect } from 'react';
 import './App.css';
 import { ToDoList } from '../ToDoList/ToDoList';
 import { Form } from '../Form/Form';
-import { Filters } from '../Filters/Filters';
 import { nanoid } from 'nanoid';
 
 const App = () => {
     // Convert this to task object instead of taskName string
     const [taskName, setTaskName] = useState('');
+    const [taskList, setTaskList] = useState([]);
 
     const handleChange = ({ target }) => {
         const { value } = target;
         setTaskName(value);
-    }
-
-    const [taskList, setTaskList] = useState([]);
+    };
 
     const handleSubmit = (event) => {
         event.preventDefault();
@@ -26,29 +24,34 @@ const App = () => {
             {
                 task: taskName,
                 id: nanoid(),
-                isResolved: isResolved
+                resolved: false
             }
         ]));
         setTaskName('');
-    }
+    };
 
     const removeTask = (taskId) => {
         setTaskList(() => taskList.filter( task => task.id !== taskId ));
+    };
+
+    const handleResolved = (taskId, resolved) => {
+        console.log(resolved);
+        const index = taskList.findIndex(task => task.id == taskId);
+        setTaskList((prev) =>
+            [
+                ...prev.slice(0, index),
+                {...prev[index], resolved},
+                ...prev.slice(index + 1)
+            ]
+        );
     }
 
-    const [isResolved, setIsResolved] = useState(false);
+    const filterResolved = (taskStatus) => {
+        const resolved = taskList.filter(task => task.status !== taskStatus);
+        console.log(resolved);
+    };
 
-    const handleResolved = ({ target }) => {
-        const checked = target.checked;
-        console.log(target.checked);
-        if (checked) {
-            setIsResolved(() => true);
-        } else {
-            setIsResolved(() => false);
-        }
-    }
-
-    // useEffect(() => { console.log(taskList) }, [taskList]);
+    useEffect(() => { console.log(taskList) }, [taskList]);
 
     return (
         <div className='App'>
@@ -59,14 +62,13 @@ const App = () => {
                 handleChange={handleChange}
                 taskName={taskName}/>
 
-            <Filters />
-
             <ToDoList 
-                taskName={taskName}
+                // taskName={taskName}
                 taskList={taskList}
-                isResolved={isResolved}
+                // isResolved={isResolved}
                 onRemove={removeTask}
-                onResolve={handleResolved}/>
+                onResolve={handleResolved}
+                onFilterResolved={filterResolved}/>
         </div>
     );
 }
