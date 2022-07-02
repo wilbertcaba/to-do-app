@@ -7,13 +7,15 @@ import { Filters } from '../Filters/Filters';
 import { nanoid } from 'nanoid';
 
 const App = () => {
+    // Convert this to task object instead of taskName string
     const [taskName, setTaskName] = useState('');
-    const [taskList, setTaskList] = useState([]);
 
     const handleChange = ({ target }) => {
         const { value } = target;
         setTaskName(value);
     }
+
+    const [taskList, setTaskList] = useState([]);
 
     const handleSubmit = (event) => {
         event.preventDefault();
@@ -23,7 +25,8 @@ const App = () => {
             ...prev,
             {
                 task: taskName,
-                id: nanoid()
+                id: nanoid(),
+                isResolved: isResolved
             }
         ]));
         setTaskName('');
@@ -31,6 +34,18 @@ const App = () => {
 
     const removeTask = (taskId) => {
         setTaskList(() => taskList.filter( task => task.id !== taskId ));
+    }
+
+    const [isResolved, setIsResolved] = useState(false);
+
+    const handleResolved = ({ target }) => {
+        const checked = target.checked;
+        console.log(target.checked);
+        if (checked) {
+            setIsResolved(() => true);
+        } else {
+            setIsResolved(() => false);
+        }
     }
 
     // useEffect(() => { console.log(taskList) }, [taskList]);
@@ -49,7 +64,9 @@ const App = () => {
             <ToDoList 
                 taskName={taskName}
                 taskList={taskList}
-                onRemove={removeTask}/>
+                isResolved={isResolved}
+                onRemove={removeTask}
+                onResolve={handleResolved}/>
         </div>
     );
 }

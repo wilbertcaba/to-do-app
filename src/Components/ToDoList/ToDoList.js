@@ -14,7 +14,9 @@ export const ToDoList = (props) => {
                         key={task.id}
                         id={task.id}
                         taskName={task.task}
-                        onRemove={props.onRemove} />
+                        isResolved={props.isResolved}
+                        onRemove={props.onRemove}
+                        onResolve={props.onResolve} />
                 })}
             </div>
         </>
