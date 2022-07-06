@@ -4,6 +4,10 @@ import './ToDoItem.css';
 export const ToDoItem = (props) => {
     const [isResolved, setIsResolved] = useState(false);
 
+    useEffect(() => {
+        props.onResolve(props.id, isResolved);
+    }, [isResolved]);
+
     const removeTask = () => {
         props.onRemove(props.id);
     }
@@ -21,21 +25,6 @@ export const ToDoItem = (props) => {
         setIsResolved((prev) => !prev);
     }
 
-    // const taskResolved = ({ target }) => {
-    //     const checked = target.checked;
-    //     console.log(target.checked);
-    //     if (checked) {
-    //         setIsResolved(() => true);
-    //         props.onResolve(props.id, isResolved);
-    //     } else {
-    //         setIsResolved(() => false);
-    //         props.onResolve(props.id, isResolved);
-    //     }
-    // }
-
-    useEffect(() => {
-        props.onResolve(props.id, isResolved);
-    }, [isResolved]);
 
     // useEffect(() => {console.log(isResolved);}, [isResolved]);
 
