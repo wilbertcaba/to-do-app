@@ -34,16 +34,16 @@ const App = () => {
         setTaskList(() => taskList.filter( task => task.id !== taskId ));
     };
 
-    const handleResolved = (taskId, resolved) => {
-        console.log(resolved);
-        const index = taskList.findIndex(task => task.id == taskId);
-        setTaskList((prev) =>
-            [
-                ...prev.slice(0, index),
-                {...prev[index], resolved},
-                ...prev.slice(index + 1)
-            ]
-        );
+    const handleResolved = (taskId) => {
+        const updateResolved = taskList.map(task => {
+            if (task.id === taskId) {
+                return {
+                    ...task, resolved: !task.resolved
+                }
+            }
+            return task;
+        });
+        setTaskList(updateResolved);
     }
 
     const filterResolved = (taskStatus) => {
@@ -57,15 +57,13 @@ const App = () => {
         <div className='App'>
             <h1>To Do List</h1>
 
-            <Form 
+            <Form
                 handleSubmit={handleSubmit}
                 handleChange={handleChange}
                 taskName={taskName}/>
 
-            <ToDoList 
-                // taskName={taskName}
+            <ToDoList
                 taskList={taskList}
-                // isResolved={isResolved}
                 onRemove={removeTask}
                 onResolve={handleResolved}
                 onFilterResolved={filterResolved}/>
