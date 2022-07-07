@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { ToDoItem } from '../ToDoItem/ToDoItem';
 import './ToDoList.css';
 import 'normalize.css';
@@ -6,7 +6,7 @@ import { Filters } from '../Filters/Filters';
 
 export const ToDoList = (props) => {
 
-    // const [filter, setFilter] = useState('All');
+    const [filter, setFilter] = useState('All');
 
     const filterMap = {
         All: () => true,
@@ -14,11 +14,21 @@ export const ToDoList = (props) => {
         Unresolved: task => !task.resolved
     };
 
+    const handleFilter = ({target}) => {
+        const filterName = target.name;
+        setFilter(() => {
+            return filterName;
+        });
+    }
+
     return (
         <>
-            <Filters onFilterResolved={props.onFilterResolved}/>
+            <Filters
+                filter={filter}
+                onFilter={handleFilter}/>
+
             <div className='to-do-list'>
-                {props.taskList.filter(filterMap['All']).map((task) => {
+                {props.taskList.filter(filterMap[filter]).map((task) => {
                     return <ToDoItem
                         key={task.id}
                         id={task.id}

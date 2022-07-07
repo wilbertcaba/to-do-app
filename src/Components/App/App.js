@@ -6,9 +6,10 @@ import { Form } from '../Form/Form';
 import { nanoid } from 'nanoid';
 
 const App = () => {
-    // Convert this to task object instead of taskName string
     const [taskName, setTaskName] = useState('');
     const [taskList, setTaskList] = useState([]);
+
+    useEffect(() => { console.log(taskList) }, [taskList]);
 
     const handleChange = ({ target }) => {
         const { value } = target;
@@ -50,8 +51,6 @@ const App = () => {
         const resolved = taskList.filter(task => task.status !== taskStatus);
         console.log(resolved);
     };
-
-    useEffect(() => { console.log(taskList) }, [taskList]);
 
     return (
         <div className='App'>

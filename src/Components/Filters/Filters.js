@@ -3,17 +3,11 @@ import './Filters.css';
 
 export const Filters = (props) => {
 
-    // Concept:
-    // const handleFilterResolved = () => {
-    //     props.onFilterResolved(props.status);
-    // };
-
     return (
         <div className='btn-group'>
-            <button className='active'>All Tasks</button>
-            {/* <button onClick={handleFilterResolved}>Resolved</button> */}
-            <button>Resolved</button>
-            <button>Unresolved</button>
+            <button onClick={props.onFilter} name='All' className={props.filter === 'All' ? 'active' : null}>All Tasks</button>
+            <button onClick={props.onFilter} name='Resolved' className={props.filter === 'Resolved' ? 'active' : null}>Resolved</button>
+            <button onClick={props.onFilter} name='Unresolved' className={props.filter === 'Unresolved' ? 'active' : null}>Unresolved</button>
         </div>
     )
 };
