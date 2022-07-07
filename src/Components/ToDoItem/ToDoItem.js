@@ -23,7 +23,7 @@ export const ToDoItem = (props) => {
     return (
         <div id={props.id} className='to-do-item' style={props.resolved ? resolvedContainer : null}>
             <div className='to-do-item-status'>
-                <input type='checkbox' onChange={taskResolved} />
+                <input type='checkbox' onChange={taskResolved} checked={props.resolved ? true : false}/>
                 <p style={props.resolved ? resolved : null}>{props.taskName}</p>
             </div>
             <button type='button' onClick={removeTask}>&#x2715;</button>
