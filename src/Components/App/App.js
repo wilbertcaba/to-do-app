@@ -31,6 +31,19 @@ const App = () => {
         setTaskName('');
     };
 
+    const handleTaskEdit = (taskId, newTaskName) => {
+        if (!newTaskName) return;
+        const editedTask = taskList.map(task => {
+            if (task.id === taskId) {
+                return {
+                    ...task, task: newTaskName
+                }
+            }
+            return task;
+        });
+        setTaskList(editedTask);
+    };
+
     const removeTask = (taskId) => {
         setTaskList(() => taskList.filter( task => task.id !== taskId ));
     };
@@ -65,6 +78,7 @@ const App = () => {
                 taskList={taskList}
                 onRemove={removeTask}
                 onResolve={handleResolved}
+                onEdit={handleTaskEdit}
                 onFilterResolved={filterResolved}/>
         </div>
     );

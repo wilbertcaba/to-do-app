@@ -34,6 +34,7 @@ export const ToDoList = (props) => {
                         id={task.id}
                         resolved={task.resolved}
                         taskName={task.task}
+                        onEdit={props.onEdit}
                         onRemove={props.onRemove}
                         onResolve={props.onResolve}/>
                 })}
