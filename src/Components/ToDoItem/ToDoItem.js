@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import './ToDoItem.css';
+import { X, Edit } from 'react-feather';
 
 export const ToDoItem = (props) => {
     const [isEditing, setIsEditing] = useState(false);
@@ -47,7 +48,7 @@ export const ToDoItem = (props) => {
 
     const viewEditTask = (
         <form className='btn-input-absolute' onSubmit={handleEditTask}>
-            <input id={props.id} type='text' placeholder='New task name' value={newTaskName} onChange={handleNewTaskName}/>
+            <input id={props.id} type='text' placeholder={props.taskName} value={newTaskName} onChange={handleNewTaskName}/>
             <input type='submit' value='Edit Task' />
         </form>
     );
@@ -55,12 +56,15 @@ export const ToDoItem = (props) => {
     const viewTask = (
         <div id={props.id} className='to-do-item' style={props.resolved ? resolvedContainer : null}>
             <div className='to-do-item-status'>
-                <input type='checkbox' onChange={taskResolved} checked={props.resolved ? true : false}/>
+                <label className='checkbox-container'>
+                    <input type='checkbox' onChange={taskResolved} checked={props.resolved ? true : false}/>
+                    <span className='checkmark'></span>
+                </label>
                 <p style={props.resolved ? resolved : null}>{props.taskName}</p>
             </div>
-            <div>
-                <button type='button' onClick={openTaskEdit}>Edit</button>
-                <button type='button' onClick={taskRemove}>&#x2715;</button>
+            <div className='to-do-item-controls'>
+                <button type='button' onClick={openTaskEdit}><Edit /></button>
+                <button type='button' onClick={taskRemove}> <X /> </button>
             </div>
         </div>
     );
